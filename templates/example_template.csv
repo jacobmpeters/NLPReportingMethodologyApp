@@ -1,0 +1,19 @@
+﻿Stage,Evaluation name,Metadata,self-assessed score,score possible
+Documents in Source,"Detailed cohort definition (i.e., participant selection)","free text notes from all pathology documents within Emory, between the years 2013 - 2022",2,5
+,,,,5
+,,,,5
+,,,,5
+Pre-processing,,,,5
+,,,,5
+,,,,5
+,,,,5
+,,,,5
+,,,,5
+Named Entity Recognition,,MedsPaCy 1.1 from http://xxxx implemented 1/5/2024,1,5
+,,,,5
+,,,,5
+,,,,5
+,,,,5
+Normalization,,,4,5
+Documents in Source,"Detailed cohort definition (i.e., participant selection)",included 2023 - 2024 as well,2,5
+,,,,5
