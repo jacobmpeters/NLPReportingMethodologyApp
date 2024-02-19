@@ -1,0 +1,19 @@
+﻿Stage,Evaluation name,Metadata,self-assessed score,score possible
+Background Measurement Study,Prior evaluation study performed,"free text notes from all pathology documents within Emory, between the years 2013 - 2022",2,5
+,Study dissemination status - reference,,,5
+,Study dissemination status - evaluation and methods,,,5
+,,,,5
+Cohort and Data Generalizability,Environment,,,5
+,Cohort Definition,,,5
+,,,,5
+,,,,5
+,,,,5
+,,,,5
+Corpus Annotation,,MedsPaCy 1.1 from http://xxxx implemented 1/5/2024,1,5
+,,,,5
+,,,,5
+NLP Algorithm and framework,,,,5
+,,,,5
+NLP Evaluation and Refinement,,,4,5
+Documents in Source,"Detailed cohort definition (i.e., participant selection)",included 2023 - 2024 as well,2,5
+,,,,5
