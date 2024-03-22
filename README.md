@@ -17,16 +17,15 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 ```mermaid
 flowchart LR
     BMS(BMS: Bkg. Measurement Study) --> SD
-
-    SD(SD: Study disseminated?) -- Yes --> REF(REF: Reference?);
-    REF -- Yes --> AQ1
-    REF -- No --> EM[EAMP: Evaluation and Methods Provided?] 
-    EM -- DESC: Description --> AQ2
-    EM -- DOI: Location --> AQ2
-    SD -- No --> EM2(EAMP: Evaluation and Methods Provided?) 
-    EM2 -- DESC: Description --> AQ3
-    EM2 -- DOI: Location --> AQ3
-    EM2 -- None --> NLPS(NLP: NLP Summary?)
-    NLPS -- DESC: Description --> AQ4
-    NLPS -- DOI: Location --> AQ4
+    SD{SD: Study disseminated?} -- Yes --> REF{REF: Reference?};
+    REF -- Yes --> AQ1[[AQ1, BMS::SD::REF::INHERIT]]
+    REF -- No --> EM{EAMP: Evaluation &\n Methods Provided?}
+    EM -- DESC: Description --> AQ2_A[[AQ2, BMS::SD::EAMP::DESC]]
+    EM -- DOI: Location --> AQ2_B[[AQ2, BMS::SD::EAMP::DOI]]
+    SD -- No --> EM2{EAMP: Evaluation &\n Methods Provided?}
+    EM2 -- DESC: Description --> AQ3_A[[AQ3, BMS::SND::EAMP::DESC]]
+    EM2 -- DOI: Location --> AQ3_B[[AQ3, BMS::SND::EAMP::DOI]]
+    EM2 -- None --> NLPS{NLP: NLP Summary?}
+    NLPS -- DESC: Description --> AQ4_A[[AQ4, BMS::SND::NLP::DESC]]
+    NLPS -- DOI: Location --> AQ4[[AQ4, BMS::SND::NLP::DOI]]
 ```
