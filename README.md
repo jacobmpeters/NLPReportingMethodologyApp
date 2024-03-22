@@ -26,7 +26,7 @@ flowchart LR
     SD -- No --> EM2(EAMP: Evaluation and Methods Provided?) 
     EM2 -- DESC: Description --> AQ3
     EM2 -- DOI: Location --> AQ3
-    EM2 -- None --> NLPS(NLP Summary?)
+    EM2 -- None --> NLPS(NLP: NLP Summary?)
     NLPS -- DESC: Description --> AQ4
     NLPS -- DOI: Location --> AQ4
 ```
