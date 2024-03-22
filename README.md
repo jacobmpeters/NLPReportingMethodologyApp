@@ -12,3 +12,21 @@ Meeting notes can be kept in the _Wiki_ tab (for now).
 - The scoring system and reporting methodology will be developed at the following source by Daniel Smith:
 
 https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
+
+## Decision Tree
+```mermaid
+flowchart LR
+    BMS(BMS: Bkg. Measurement Study) --> SD
+
+    SD(SD: Study disseminated?) -- Yes --> REF(REF: Reference?);
+    REF -- Yes --> AQ1
+    REF -- No --> EM[EAMP: Evaluation and Methods Provided?] 
+    EM -- DESC: Description --> AQ2
+    EM -- DOI: Location --> AQ2
+    SD -- No --> EM2(EAMP: Evaluation and Methods Provided?) 
+    EM2 -- DESC: Description --> AQ3
+    EM2 -- DOI: Location --> AQ3
+    EM2 -- None --> NLPS(NLP Summary?)
+    NLPS -- DESC: Description --> AQ4
+    NLPS -- DOI: Location --> AQ4
+```
