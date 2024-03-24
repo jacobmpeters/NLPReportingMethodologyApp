@@ -18,14 +18,14 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 flowchart LR
     BMS(BMS: Bkg. Measurement Study) --> SD
     SD{SD: Study disseminated?} -- Yes --> REF{REF: Reference?};
-    REF -- Yes --> AQ1[[AQ1, BMS::SD::REF::INHERIT]]
+    REF -- Yes --> AQ1[[AQ1, BMS::SD::REF::INHERIT::1]]
     REF -- No --> EM{EAMP: Evaluation &\n Methods Provided?}
-    EM -- DESC: Description --> AQ2_A[[AQ2, BMS::SD::EAMP::DESC]]
-    EM -- DOI: Location --> AQ2_B[[AQ2, BMS::SD::EAMP::DOI]]
+    EM -- DESC: Description of Evaluation and Methods --> AQ2_A[[AQ2, BMS::SD::EAMP::DESC::1]]
+    EM -- DOI: Location (DOI or Equivalent) provided --> AQ2_B[[AQ2, BMS::SD::EAMP::DOI::1]]
     SD -- No --> EM2{EAMP: Evaluation &\n Methods Provided?}
-    EM2 -- DESC: Description --> AQ3_A[[AQ3, BMS::SND::EAMP::DESC]]
-    EM2 -- DOI: Location --> AQ3_B[[AQ3, BMS::SND::EAMP::DOI]]
+    EM2 -- DESC: Description of Evaluation and Methods --> AQ3_A[[AQ3, BMS::SND::EAMP::DESC::1]]
+    EM2 -- DOI: Location (DOI or Equivalent) provided --> AQ3_B[[AQ3, BMS::SND::EAMP::DOI::1]]
     EM2 -- None --> NLPS{NLP: NLP Summary?}
-    NLPS -- DESC: Description --> AQ4_A[[AQ4, BMS::SND::NLP::DESC]]
-    NLPS -- DOI: Location --> AQ4[[AQ4, BMS::SND::NLP::DOI]]
+    NLPS -- DESC: Description of Evaluation and Methods --> AQ4_A[[AQ4, BMS::SND::NLP::DESC::1]]
+    NLPS -- DOI: Location (DOI or Equivalent) provided --> AQ4[[AQ4, BMS::SND::NLP::DOI::1]]
 ```
