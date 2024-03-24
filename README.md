@@ -18,7 +18,7 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 flowchart LR
     BMS{Background Measurement\n Study Completed?} -- Yes --> SD;
     SD{SD: Study disseminated?} -- Yes --> REF{REF: Reference?};
-    REF -- Yes --> AQ1[[AQ1, BMS::SD::REF::INHERIT::1]]
+    REF -- Yes\n (BMS::SD::1) --> AQ1[[AQ1, BMS::SD::REF::INHERIT::1]]
     REF -- No --> EM{EAMP: Evaluation &\n Methods Provided?}
     EM -- DESC: Description of Evaluation and Methods --> AQ2_A[[AQ2, BMS::SD::EAMP::DESC::1]]
     EM -- DOI: Location (DOI or Equivalent) provided --> AQ2_B[[AQ2, BMS::SD::EAMP::DOI::1]]
