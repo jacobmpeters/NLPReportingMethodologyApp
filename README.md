@@ -16,17 +16,18 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 ## Decision Tree
 ```mermaid
 flowchart LR
-    BMS{_BMS_\n Background Measurement\n Study Completed?} -- Yes --> SD;
-    SD{SD: Study disseminated?} -- Yes --> REF{REF: Reference?};
-    REF -- Yes\n (BMS::SD::1) --> AQ1[[BMS::SD::REF::INHERIT::1]]
-    REF -- No --> EM{EAMP: Evaluation &\n Methods Provided?}
-    EM -- DESC: Description of Evaluation and Methods --> AQ2_A[[AQ2, BMS::SD::EAMP::DESC::1]]
-    EM -- DOI: Location (DOI or Equivalent) provided --> AQ2_B[[AQ2, BMS::SD::EAMP::DOI::1]]
-    SD -- No --> EM2{EAMP: Evaluation &\n Methods Provided?}
-    EM2 -- DESC: Description of Evaluation and Methods --> AQ3_A[[AQ3, BMS::SND::EAMP::DESC::1]]
-    EM2 -- DOI: Location (DOI or Equivalent) provided --> AQ3_B[[AQ3, BMS::SND::EAMP::DOI::1]]
-    EM2 -- None --> NLPS{NLP: NLP Summary?}
-    NLPS -- DESC: Description of Evaluation and Methods --> AQ4_A[[AQ4, BMS::SND::NLP::DESC::1]]
-    NLPS -- DOI: Location (DOI or Equivalent) provided --> AQ4[[AQ4, BMS::SND::NLP::DOI::1]]
-    BMS -- No --> BMS0[[BMS::0]]
+    BMS{Background Measurement\n Study Completed?} -- Yes\n (BMS::1) --> SD{Study disseminated};
+    SD -- Yes\n (BMS::SD::1) --> REF{Reference Provided?};
+    REF -- Yes --> AQ1[[Keyword output - BMS::SD::REF::1]]
+    SD -- Yes\n (BMS::SD::1) --> EM{Evaluation &\n Methods Provided?};
+    EM -- Yes, via Description\n of Evaluation/Methods --> AQ2_A[[Keyword output - BMS::SD::EAMP::DESC::1]]
+    EM -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ2_B[Keyword output - BMS::SD::EAMP::DOI::1]]
+    SD -- No\n (BMS::SND::1) --> REF2{Reference Available?};
+    REF2 -- No --> EM2{EAMP: Evaluation &\n Methods Provided?};
+    EM2 -- Yes, via Description\n of Evaluation/Methods --> AQ3_A[[Keyword output - BMS::SND::EAMP::DESC::1]]
+    EM2 -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ3_B[Keyword output - BMS::SND::EAMP::DOI::1]]
+    EM2 -- No --> NLP2{NLP Summary?};
+    NLP2 -- Yes, via Description\n of NLP pipeline --> AQ4_A[[Keyword output - BMS::SND::NLP::DESC::1]]
+    NLP2 -- Yes, via location\n of NLP pipeline (DOI or Equivalent) --> AQ4_B[[Keyword output - BMS::SND::NLP::DOI::1]]
+    BMS -- No --> BMS0[[Keyword output - BMS::0]]
 ```
