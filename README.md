@@ -16,7 +16,7 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 ## Decision Tree
 ```mermaid
 flowchart LR
-    BMS{Background Measurement Study Completed?} -- Yes --> SD
+    BMS{Background Measurement\n Study Completed?} -- Yes --> SD
     SD{SD: Study disseminated?} -- Yes --> REF{REF: Reference?};
     REF -- Yes --> AQ1[[AQ1, BMS::SD::REF::INHERIT::1]]
     REF -- No --> EM{EAMP: Evaluation &\n Methods Provided?}
