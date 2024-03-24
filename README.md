@@ -28,9 +28,4 @@ flowchart LR
     EM2 -- None --> NLPS{NLP: NLP Summary?}
     NLPS -- DESC: Description of Evaluation and Methods --> AQ4_A[[AQ4, BMS::SND::NLP::DESC::1]]
     NLPS -- DOI: Location (DOI or Equivalent) provided --> AQ4[[AQ4, BMS::SND::NLP::DOI::1]]
-
-    AQ2_A --- x1 & AQ2_B --- x2 & x1 --- x3 & x2 --- x4
-    x3 --- AQ3_A & x4 --- AQ3_B
-    x3 --- x5 & x4 --- x6 & x5 --- AQ4_A & x6 --- AQ4
-    style x1, x2, x3, x4, x5, x6 stroke-width:0px,fill:none
 ```
