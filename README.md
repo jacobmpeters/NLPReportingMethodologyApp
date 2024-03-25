@@ -21,11 +21,11 @@ flowchart LR
     REF -- Yes --> AQ1[[Keyword output - BMS::SD::REF::1]]
     SD -- Yes\n (BMS::SD::1) --> EM{Evaluation &\n Methods Provided?};
     EM -- Yes, via Description\n of Evaluation/Methods --> AQ2_A[[Keyword output - BMS::SD::EAMP::DESC::1]]
-    EM -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ2_B[Keyword output - BMS::SD::EAMP::DOI::1]]
+    EM -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ2_B[[Keyword output - BMS::SD::EAMP::DOI::1]]
     SD -- No\n (BMS::SND::1) --> REF2{Reference Available?};
     REF2 -- No --> EM2{EAMP: Evaluation &\n Methods Provided?};
     EM2 -- Yes, via Description\n of Evaluation/Methods --> AQ3_A[[Keyword output - BMS::SND::EAMP::DESC::1]]
-    EM2 -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ3_B[Keyword output - BMS::SND::EAMP::DOI::1]]
+    EM2 -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ3_B[[Keyword output - BMS::SND::EAMP::DOI::1]]
     EM2 -- No --> NLP2{NLP Summary?};
     NLP2 -- Yes, via Description\n of NLP pipeline --> AQ4_A[[Keyword output - BMS::SND::NLP::DESC::1]]
     NLP2 -- Yes, via location\n of NLP pipeline (DOI or Equivalent) --> AQ4_B[[Keyword output - BMS::SND::NLP::DOI::1]]
