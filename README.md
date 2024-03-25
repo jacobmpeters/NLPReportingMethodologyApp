@@ -16,14 +16,14 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 ## Decision Tree
 ```mermaid
 flowchart LR
-    BMS{Background Measurement\n Study Completed?} -- Yes\n (BMS::1) --> SD{Study disseminated};
+    BMS{Background Measurement\n Study Completed?} -- Yes\n (BMS::1) --> SD{Study disseminated?};
     SD -- Yes\n (BMS::SD::1) --> REF{Reference Provided?};
     REF -- Yes --> AQ1[[Keyword output - BMS::SD::REF::1]]
-    SD -- Yes\n (BMS::SD::1) --> EM{Evaluation &\n Methods Provided?};
+    REF -- No --> EM{Evaluation &\n Methods Provided?};
+    SD -- Yes\n (BMS::SD::1) --> EM
     EM -- Yes, via Description\n of Evaluation/Methods --> AQ2_A[[Keyword output - BMS::SD::EAMP::DESC::1]]
     EM -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ2_B[[Keyword output - BMS::SD::EAMP::DOI::1]]
-    SD -- No\n (BMS::SND::1) --> REF2{Reference Available?};
-    REF2 -- No --> EM2{EAMP: Evaluation &\n Methods Provided?};
+    SD -- No\n (BMS::SND::1) --> EM2{EAMP: Evaluation &\n Methods Provided?};
     EM2 -- Yes, via Description\n of Evaluation/Methods --> AQ3_A[[Keyword output - BMS::SND::EAMP::DESC::1]]
     EM2 -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ3_B[[Keyword output - BMS::SND::EAMP::DOI::1]]
     EM2 -- No --> NLP2{NLP Summary?};
