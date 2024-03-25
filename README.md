@@ -16,18 +16,19 @@ https://github.com/OHDSI/NLPTools/wiki/NLP-Validation-within-an-OHDSI-Framework
 ## Decision Tree
 ```mermaid
 flowchart LR
-    BMS{Background Measurement\n Study Completed?} -- Yes\n (BMS::1) --> SD{Study disseminated?};
-    SD -- Yes\n (BMS::SD::1) --> REF{Reference Provided?};
-    REF -- Yes --> AQ1[[Keyword output - BMS::SD::REF::1]]
-    REF -- No --> EM{Evaluation &\n Methods Provided?};
-    SD -- Yes\n (BMS::SD::1) --> EM
-    EM -- Yes, via Description\n of Evaluation/Methods --> AQ2_A[[Keyword output - BMS::SD::EAMP::DESC::1]]
-    EM -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ2_B[[Keyword output - BMS::SD::EAMP::DOI::1]]
-    SD -- No\n (BMS::SND::1) --> EM2{EAMP: Evaluation &\n Methods Provided?};
-    EM2 -- Yes, via Description\n of Evaluation/Methods --> AQ3_A[[Keyword output - BMS::SND::EAMP::DESC::1]]
-    EM2 -- Yes, via location\n of Evaluation/Methods\n (DOI or Equivalent) --> AQ3_B[[Keyword output - BMS::SND::EAMP::DOI::1]]
-    EM2 -- No --> NLP2{NLP Summary?};
-    NLP2 -- Yes, via Description\n of NLP pipeline --> AQ4_A[[Keyword output - BMS::SND::NLP::DESC::1]]
-    NLP2 -- Yes, via location\n of NLP pipeline (DOI or Equivalent) --> AQ4_B[[Keyword output - BMS::SND::NLP::DOI::1]]
-    BMS -- No --> BMS0[[Keyword output - BMS::0]]
+    BMS{Background Measurement\n Study Completed?} -- Yes --> BMS_T[[Keyword output - BMS::1]] --> SD{Study disseminated?};
+        SD -- Yes --> SD_T[[BMS-SD::1]] --> REF{Reference Provided?};
+            REF -- Yes --> AQ1_T[[BMS-REF::1]] --> EM{Evaluation &\n Methods Provided?};
+                EM -- Yes --> EM_T[[BMS-EM::1]]
+                    EM_T -- ...via Description --> EM_DESC[[BMS-EM-DESC::1]]
+                    EM_T -- ...via Location\n (DOI or Equivalent) --> EM_DOI[[BMS-EM-DOI::1]]
+                    EM_T --> NLP1{NLP Pipeline\n Summary Provided?};
+                        NLP1 -- Yes --> NLP1_T[[BMS-NLP::1]]
+                        NLP1_T -- ...via Description --> AQ3_A[[BMS-NLP-DESC::1]]
+                        NLP1_T -- ...via Location\n (DOI or Equivalent) --> AQ3_B[[BMS-NLP-DOI::1]]
+                        NLP1 -- No --> NLP1_F[[BMS-NLP::0]]
+                EM -- No --> EM_F[[BMS-EM::0]] --> NLP1
+            REF -- No --> AQ1_F[[BMS-REF::0]] --> EM
+        SD -- No --> SD_F[[BMS-SD::0]] --> EM
+    BMS -- No --> BMS_F[[Keyword output - BMS::0]]
 ```
