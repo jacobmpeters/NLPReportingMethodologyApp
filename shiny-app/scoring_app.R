@@ -3,12 +3,14 @@
 #' Author: Jake Peters
 #' Date: April 9, 2024
 #' Description: This Shiny app loads a questionnaire configuration from a CSV 
-#' file, displays it using the shinySurveys package, and saves the responses to 
+#' file, displays it using the shinysurveys package, and saves the responses to 
 #' a CSV file.
 
 # Load necessary libraries
 library(shinysurveys)
 library(readr)
+library(bslib)
+
 
 # Read questionnaire configuration from CSV file
 questionnaire_df <- readr::read_csv("questionnaire_config.csv")
