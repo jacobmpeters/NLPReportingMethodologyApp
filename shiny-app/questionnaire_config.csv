@@ -1,0 +1,17 @@
+question,option,input_type,input_id,dependence,dependence_value,required
+Is the background measurement study completed?,Yes,y/n,BMS,NA,NA,TRUE
+Is the background measurement study completed?,No,y/n,BMS,NA,NA,TRUE
+Is the background measurement study disseminated?,Yes,y/n,SD,BMS,Yes,TRUE
+Is the background measurement study disseminated?,No,y/n,SD,BMS,Yes,TRUE
+Is a reference for the background measurement study provided?,Yes,y/n,REF,SD,Yes,TRUE
+Is a reference for the background measurement study provided?,No,y/n,REF,SD,Yes,TRUE
+Are the evaluation and methods provided?,Yes,y/n,EM,BMS,Yes,TRUE
+Are the evaluation and methods provided?,No,y/n,EM,BMS,Yes,TRUE
+"If, yes, how are the evalutation and methods provided?",A description is provided,mc,EM_TYPE,EM,Yes,TRUE
+"If, yes, how are the evalutation and methods provided?",A description is referenced via a DOI or equivalent,mc,EM_TYPE,EM,Yes,TRUE
+"If, yes, how are the evalutation and methods provided?",All of the above,mc,EM_TYPE,EM,Yes,TRUE
+Is a summary of the NLP pipeline used in this study provided?,Yes,y/n,NLP,BMS,Yes,TRUE
+Is a summary of the NLP pipeline used in this study provided?,No,y/n,NLP,BMS,Yes,TRUE
+"If, yes, how is the NLP pipeline summary given? ",A description is provided,mc,NLP_TYPE,NLP,Yes,TRUE
+"If, yes, how is the NLP pipeline summary given?",A description is referenced via a DOI or equivalent,mc,NLP_TYPE,NLP,Yes,TRUE
+"If, yes, how is the NLP pipeline summary given? ",All of the above,mc,NLP_TYPE,NLP,Yes,TRUE
