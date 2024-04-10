@@ -26,13 +26,15 @@ df_questionnaire <- readr::read_csv("questionnaire_config.csv")
 
 # Function to map responses to keyword values and return specific columns
 map_responses_to_keyword <- function(config_data, response_data) {
-
   # Merge configuration with responses
   merged_data <- merge(config_data, response_data, by.x = "input_id", by.y = "question_id")
   
-  # Map responses to keyword values and select the relevant columns
+  # Map responses to keyword values and filter for the selected response
+  # Assume response_data has columns 'question_id' and 'response'
+  # and config_data has 'input_id', 'option', and 'keyword'
   result_data <- merged_data %>%
-    mutate(keyword = ifelse(response == option, keyword, NA)) %>%
+    filter(option == response) %>%
+    distinct(question, input_id, response, keyword, .keep_all = TRUE) %>%
     select(question, input_id, response, keyword)
   
   return(result_data)
