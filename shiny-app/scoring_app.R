@@ -1,52 +1,77 @@
 #' NLP Reporting App
-#' 
+#'
 #' Author: Jake Peters
 #' Date: April 9, 2024
-#' Description: This Shiny app loads a questionnaire configuration from a CSV 
-#' file, displays it using the shinysurveys package, and saves the responses to 
+#' Description: This Shiny app loads a questionnaire configuration from a CSV
+#' file, displays it using the shinysurveys package, and saves the responses to
 #' a CSV file.
 
-# Load necessary libraries
-library(shinysurveys)
-library(readr)
-library(bslib)
+
+## Load necessary libraries ---------------------------------------------------
+required_packages <- c("shiny", "shinysurveys", "readr", "dplyr")
+missing_packages  <- setdiff(required_packages, installed.packages()[, "Package"])
+
+# Install missing packages if needed
+if (length(missing_packages) > 0) { install.packages(missing_packages)}
+
+# Load required packages
+invisible(sapply(required_packages, library, character.only = TRUE))
 
 
-# Read questionnaire configuration from CSV file
-questionnaire_df <- readr::read_csv("questionnaire_config.csv")
+## Read questionnaire configuration from CSV file ------------------------------
+df_questionnaire <- readr::read_csv("questionnaire_config.csv")
 
-# Define the UI components
+
+## Helper Functions ------------------------------------------------------------
+
+# Function to map responses to keyword values and return specific columns
+map_responses_to_keyword <- function(config_data, response_data) {
+  # Merge configuration with responses, keeping the order of response_data
+  merged_data <- merge(response_data, config_data, by.x = "question_id", by.y = "input_id", sort = FALSE)
+  
+  # Map responses to keyword values and filter for the selected response
+  # We will use 'merged_data' directly to ensure column references are correct
+  result_data <- merged_data %>%
+    filter(option == response) %>%
+    select(question, input_id = question_id, response, keyword) %>%
+    distinct()  # Ensure we have unique rows for each question-response pair
+  
+  return(result_data)
+}
+
+
+
+## Define the UI components ----------------------------------------------------
 ui <- shiny::fluidPage(
   shinysurveys::surveyOutput(
-    questionnaire_df,
+    df_questionnaire,
     survey_title = "Clever Name:",
     survey_description = "An NLP Reporting Methodology Questionnaire"
   ),
-  card(
-    card_title(markdown("\n\n## Results: ")),
-    card_body(
-      tableOutput("response_data")
-    )
-  )
+  shiny::tableOutput("response_data")
 )
 
-# Define the server logic
+
+## Define the server logic -----------------------------------------------------
 server <- function(input, output, session) {
-  # Render the survey
-  renderSurvey()
-  
+  shinysurveys::renderSurvey()
+
   # Define observer for submit button
-  observeEvent(input$submit, {
+  shiny::observeEvent(input$submit, {
     # Store rendered data table as an output variable
-    output$response_data <- renderTable({
-      # Get the survey data
-      df_responses <- getSurveyData()
-      # Write responses to CSV file
-      readr::write_csv2(df_responses, 'questionnaire_responses.csv')
-      df_responses
+    output$response_data <- shiny::renderTable({
+      df_responses <- shinysurveys::getSurveyData()
+      result_df <- map_responses_to_keyword(df_questionnaire, df_responses)
+      readr::write_csv2(result_df, "questionnaire_responses.csv")
+      print(result_df)
+      result_df
     })
   })
 }
 
-# Run the application
+
+## Run the application ---------------------------------------------------------
 shiny::shinyApp(ui = ui, server = server)
+
+
+
