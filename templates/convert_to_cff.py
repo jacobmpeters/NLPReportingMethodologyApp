@@ -1,79 +1,71 @@
-import csv
+import os
+import sys
+import pandas as pd
 import yaml
-import re
+from datetime import datetime
 
-# use delimiter '\t' for TSVs
-def convert_to_cff(input_file_path, output_cff_file_path, delimiter=','):
+def get_keywords_from_excel(workbook_path, sheet_name):
+    """
+    Reads keywords from a specific sheet in an Excel workbook.
+    Returns the keyword if found, otherwise returns "Keyword not found".
+    """
+    df = pd.read_excel(workbook_path, sheet_name=sheet_name)
     
-    def read_file_content(input_file_path, delimiter):
-        file_content = []
-        with open(input_file_path, mode='r', encoding='utf-8') as file:
-            reader = csv.DictReader(file, delimiter=delimiter)
-            for row in reader:
-                file_content.append(row)
-        return file_content
+    keyword = None
+    for index, row in df.iterrows():
+        if 'Keywords exported' in row.values:
+            kw_exported_index = row.tolist().index('Keywords exported')
+            keyword = row.iat[kw_exported_index + 1] if kw_exported_index + 1 < len(row) else None
+            break
+    
+    return keyword if keyword is not None else "Keyword not found"
 
-    def build_cff(file_content):
-        cff_data = {
-            "cff-version": "1.2.0",
-            "message": "If you use this software, please cite it as below.",
-            "metadata": {
-                "keywords": []
+def build_cff(workbook_path):
+    """
+    Builds the .cff content with the keyword included from the specified Excel workbook.
+    Creates the .cff file in the same directory as the Excel file.
+    """
+    # TODO: Should this be a  command line argument
+    sheet_name = 'Scoring POC_v1'
+    
+    keyword = get_keywords_from_excel(workbook_path, sheet_name)
+    
+    workbook_dir = os.path.dirname(workbook_path)
+    
+    cff_file_path = os.path.join(workbook_dir, 'example.cff')
+    
+    cff_data = {
+        "cff-version": "1.2.0",
+        "message": "If you use this software in your work, please cite it using the following metadata.",
+        "title": "Example Software Project",
+        "version": "1.0.0",
+        "date-released": datetime.today().strftime('%Y-%m-%d'),
+        "authors": [
+            {
+                "name": "Jane Doe",
+                "affiliation": "University of Somewhere",
+                "orcid": "0000-0002-1825-0097"
             },
-            "references": []
-        }
+            {
+                "name": "John Smith",
+                "affiliation": "Another University",
+                "orcid": "0000-0001-2345-6789"
+            }
+        ],
+        "keywords": keyword,
+        "repository-code": "https://github.com/exampleuser/exampleproject",
+        "license": "MIT"
+    }
 
-        stage_entry = None
+    cff_output = yaml.dump(cff_data, sort_keys=False, allow_unicode=True)
 
-        for entry in file_content:
-            stage = entry.get("\ufeffStage") or entry.get("Stage")
-            evaluation_name = entry.get("Evaluation name")
-            metadata = entry.get("Metadata")
-            self_assessed_score = entry.get("self-assessed score", "").strip()
-            score_possible = entry.get("score possible", "").strip()
+    with open(cff_file_path, 'w', encoding='utf-8') as cff_file:
+        cff_file.write(cff_output)
 
-            if not stage and not evaluation_name and not metadata:
-                continue
+if len(sys.argv) < 2:
+    print("Please provide the path to the Excel file as a command line argument.")
+    sys.exit(1)
 
-            if stage:
-                stage_entry = {"Stage": stage, "Evaluations": []}
-                cff_data["metadata"]["keywords"].append(stage_entry)
+workbook_path = sys.argv[1]
 
-            if not stage_entry:
-                stage_entry = {"Stage": "Unspecified Stage", "Evaluations": []}
-                cff_data["metadata"]["keywords"].append(stage_entry)
-
-            if evaluation_name:
-                evaluation_entry = {
-                    "Evaluation Name": evaluation_name,
-                    **({"Metadata": metadata} if metadata else {}),
-                    **({"self-assessed score": int(self_assessed_score)} if self_assessed_score.isdigit() else {}),
-                    **({"score possible": int(score_possible)} if score_possible.isdigit() else {}),
-                }
-                stage_entry["Evaluations"].append(evaluation_entry)
-            else:
-                if metadata:
-                    stage_entry["Metadata"] = metadata
-                if self_assessed_score.isdigit():
-                    stage_entry["self-assessed score"] = int(self_assessed_score)
-                if score_possible.isdigit():
-                    stage_entry["score possible"] = int(score_possible)
-
-        return yaml.dump(cff_data, sort_keys=False, allow_unicode=True)
-
-    def remove_empty_evaluations(yaml_content):
-        # Remove lines with empty "Evaluations"
-        return re.sub(r"Evaluations: \[\]\n(    )?", "", yaml_content)
-
-    # Read the file content
-    file_content = read_file_content(input_file_path, delimiter)
-    
-    # Convert the file content to .cff format
-    cff_output = build_cff(file_content)
-
-    # Remove lines with empty "Evaluations"
-    cff_output_cleaned = remove_empty_evaluations(cff_output)
-
-    # Write the cleaned .cff content to the specified output file
-    with open(output_cff_file_path, 'w', encoding='utf-8') as cff_file:
-        cff_file.write(cff_output_cleaned)
+build_cff(workbook_path)
