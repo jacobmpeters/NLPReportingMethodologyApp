@@ -25,9 +25,12 @@ df_questionnaire <- readr::read_csv("questionnaire_config.csv")
 ## Helper Functions ------------------------------------------------------------
 
 # Function to map responses to keyword values and return specific columns
-map_responses_to_keyword <- function(config_data, response_data) {
+map_response_to_keyword <- function(config_data, response_data) {
   # Merge configuration with responses, keeping the order of response_data
-  merged_data <- merge(response_data, config_data, by.x = "question_id", by.y = "input_id", sort = FALSE)
+  merged_data <- merge(response_data, config_data, 
+                       by.x = "question_id", 
+                       by.y = "input_id", 
+                       sort = FALSE)
   
   # Map responses to keyword values and filter for the selected response
   # We will use 'merged_data' directly to ensure column references are correct
@@ -38,7 +41,6 @@ map_responses_to_keyword <- function(config_data, response_data) {
   
   return(result_data)
 }
-
 
 
 ## Define the UI components ----------------------------------------------------
@@ -61,7 +63,7 @@ server <- function(input, output, session) {
     # Store rendered data table as an output variable
     output$response_data <- shiny::renderTable({
       df_responses <- shinysurveys::getSurveyData()
-      result_df <- map_responses_to_keyword(df_questionnaire, df_responses)
+      result_df <- map_response_to_keyword(df_questionnaire, df_responses)
       readr::write_csv2(result_df, "questionnaire_responses.csv")
       print(result_df)
       result_df
