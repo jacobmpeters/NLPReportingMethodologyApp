@@ -1,0 +1,8 @@
+question;input_id;response;keyword
+Is the background measurement study completed?;BMS;Yes;BMS::1
+Is the background measurement study disseminated?;SD;Yes;BMS-SD::1
+Is a reference for the background measurement study provided?;REF;No;BMS-REF::0
+Are the evaluation and methods provided?;EM;Yes;BMS-EM::1
+If, yes, how are the evalutation and methods provided?;EM_TYPE;A description is referenced via a DOI or equivalent;BMS-EM-DOI::1
+Is a summary of the NLP pipeline used in this study provided?;NLP;Yes;BMS-NLP::1
+If, yes, how is the NLP pipeline summary given?;NLP_TYPE;A description is provided.;BMS-NLP-DESC::1
