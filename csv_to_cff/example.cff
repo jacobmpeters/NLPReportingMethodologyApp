@@ -3,7 +3,7 @@ message: If you use this software in your work, please cite it using the followi
   metadata.
 title: Example Software Project
 version: 1.0.0
-date-released: '2024-04-11'
+date-released: '2024-04-12'
 authors:
 - name: Jane Doe
   affiliation: University of Somewhere
@@ -11,6 +11,13 @@ authors:
 - name: John Smith
   affiliation: Another University
   orcid: 0000-0001-2345-6789
-keywords: BMS::SND::EAMP::1
+keywords:
+- BMS::1
+- BMS-SD::1
+- BMS-REF::0
+- BMS-EM::1
+- BMS-EM-DOI::1
+- BMS-NLP::1
+- BMS-NLP-DESC::1
 repository-code: https://github.com/exampleuser/exampleproject
 license: MIT
