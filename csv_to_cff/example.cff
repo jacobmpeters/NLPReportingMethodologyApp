@@ -17,6 +17,7 @@ keywords:
 - BMS-REF::0
 - BMS-EM::1
 - BMS-EM-DOI::1
+- BMS-EM-DESC::1
 - BMS-NLP::1
 - BMS-NLP-DESC::1
 repository-code: https://github.com/exampleuser/exampleproject

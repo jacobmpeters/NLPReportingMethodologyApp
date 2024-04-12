@@ -7,10 +7,18 @@ from datetime import datetime
 def get_keywords_from_csv(csv_path):
     """
     Reads keywords from the questionnaire_responses.csv file.
-    Returns a list of unique keywords.
+    Returns a list of unique keywords, splitting keywords on each line, while preserving the order.
     """
     df = pd.read_csv(csv_path, sep=';')
-    keywords = df['keyword'].unique().tolist()
+    keywords = []
+    seen_keywords = set()
+    for keyword_line in df['keyword']:
+        if pd.notna(keyword_line):
+            for keyword in keyword_line.split(','):
+                keyword = keyword.strip()
+                if keyword not in seen_keywords:
+                    keywords.append(keyword)
+                    seen_keywords.add(keyword)
     return keywords
 
 def build_cff(csv_path):
