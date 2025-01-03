@@ -47,8 +47,8 @@ map_response_to_keyword <- function(config_data, response_data) {
 ui <- shiny::fluidPage(
   shinysurveys::surveyOutput(
     df_questionnaire,
-    survey_title = "Clever Name:",
-    survey_description = "An NLP Reporting Methodology Questionnaire"
+    survey_title = "NLP Metadata Standardization",
+    survey_description = "Reporting Methodology Questionnaire"
   ),
   shiny::tableOutput("response_data")
 )

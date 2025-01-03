@@ -5,4 +5,4 @@ Is a reference for the background measurement study provided?;REF;No;BMS-REF::0
 Are the evaluation and methods provided?;EM;Yes;BMS-EM::1
 If, yes, how are the evalutation and methods provided?;EM_TYPE;A description is referenced via a DOI or equivalent;BMS-EM-DOI::1
 Is a summary of the NLP pipeline used in this study provided?;NLP;Yes;BMS-NLP::1
-If, yes, how is the NLP pipeline summary given?;NLP_TYPE;A description is provided.;BMS-NLP-DESC::1
+If, yes, how is the NLP pipeline summary given?;NLP_TYPE;All of the above;BMS-NLP-DESC::1, BMS-NLP-DOI::1
