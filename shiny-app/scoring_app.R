@@ -9,36 +9,61 @@
 
 ## Load necessary libraries ---------------------------------------------------
 required_packages <- c("shiny", "shinysurveys", "readr", "dplyr")
-missing_packages  <- setdiff(required_packages, installed.packages()[, "Package"])
+missing_packages  <- setdiff(
+                             required_packages,
+                             installed.packages()[, "Package"])
 
 # Install missing packages if needed
-if (length(missing_packages) > 0) { install.packages(missing_packages)}
+if (length(missing_packages) > 0) {
+  install.packages(missing_packages)
+}
 
 # Load required packages
 invisible(sapply(required_packages, library, character.only = TRUE))
 
 
 ## Read questionnaire configuration from CSV file ------------------------------
-df_questionnaire <- readr::read_csv("questionnaire_config.csv")
+tryCatch({
+  df_questionnaire <- readr::read_csv("questionnaire_config.csv")
+  message("Questionnaire configuration loaded successfully.")
+  print(colnames(df_questionnaire))
+}, error = function(e) {
+  stop("Error reading questionnaire configuration: ", e$message)
+})
 
+# Check the structure of the loaded dataframe
+if (!all(
+         c("section",
+           "question",
+           "option",
+           "input_type",
+           "input_id",
+           "dependence",
+           "dependence_value",
+           "required",
+           "keyword")
+         %in% colnames(df_questionnaire))) {
+  stop(
+       "The questionnaire configuration file does not have the required columns.")
+}
 
 ## Helper Functions ------------------------------------------------------------
 
 # Function to map responses to keyword values and return specific columns
 map_response_to_keyword <- function(config_data, response_data) {
   # Merge configuration with responses, keeping the order of response_data
-  merged_data <- merge(response_data, config_data, 
-                       by.x = "question_id", 
-                       by.y = "input_id", 
+  merged_data <- merge(response_data, config_data,
+                       by.x = "question_id",
+                       by.y = "input_id",
                        sort = FALSE)
-  
+
   # Map responses to keyword values and filter for the selected response
   # We will use 'merged_data' directly to ensure column references are correct
   result_data <- merged_data %>%
     filter(option == response) %>%
     select(question, input_id = question_id, response, keyword) %>%
     distinct()  # Ensure we have unique rows for each question-response pair
-  
+
   return(result_data)
 }
 
@@ -71,9 +96,5 @@ server <- function(input, output, session) {
   })
 }
 
-
 ## Run the application ---------------------------------------------------------
 shiny::shinyApp(ui = ui, server = server)
-
-
-

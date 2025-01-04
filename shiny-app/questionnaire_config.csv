@@ -1,17 +1,112 @@
-question,option,input_type,input_id,dependence,dependence_value,required,keyword
-Is the background measurement study completed?,Yes,y/n,BMS,NA,NA,TRUE,BMS::1
-Is the background measurement study completed?,No,y/n,BMS,NA,NA,TRUE,BMS::0
-Is the background measurement study disseminated?,Yes,y/n,SD,BMS,Yes,TRUE,BMS-SD::1
-Is the background measurement study disseminated?,No,y/n,SD,BMS,Yes,TRUE,BMS-SD::0
-Is a reference for the background measurement study provided?,Yes,y/n,REF,SD,Yes,TRUE,BMS-REF::1
-Is a reference for the background measurement study provided?,No,y/n,REF,SD,Yes,TRUE,BMS-REF::0
-Are the evaluation and methods provided?,Yes,y/n,EM,BMS,Yes,TRUE,BMS-EM::1
-Are the evaluation and methods provided?,No,y/n,EM,BMS,Yes,TRUE,BMS-EM::0
-"If, yes, how are the evalutation and methods provided?",A description is provided.,mc,EM_TYPE,EM,Yes,TRUE,BMS-EM-DESC::1
-"If, yes, how are the evalutation and methods provided?",A description is referenced via a DOI or equivalent,mc,EM_TYPE,EM,Yes,TRUE,BMS-EM-DOI::1
-"If, yes, how are the evalutation and methods provided?",All of the above,mc,EM_TYPE,EM,Yes,TRUE,"BMS-EM-DESC::1, BMS-EM-DOI::1 "
-Is a summary of the NLP pipeline used in this study provided?,Yes,y/n,NLP,BMS,Yes,TRUE,BMS-NLP::1
-Is a summary of the NLP pipeline used in this study provided?,No,y/n,NLP,BMS,Yes,TRUE,BMS-NLP::0
-"If, yes, how is the NLP pipeline summary given? ",A description is provided.,mc,NLP_TYPE,NLP,Yes,TRUE,BMS-NLP-DESC::1
-"If, yes, how is the NLP pipeline summary given?",A description is referenced via a DOI or equivalent,mc,NLP_TYPE,NLP,Yes,TRUE,BMS-NLP-DOI::1
-"If, yes, how is the NLP pipeline summary given? ",All of the above,mc,NLP_TYPE,NLP,Yes,TRUE,"BMS-NLP-DESC::1, BMS-NLP-DOI::1"
+﻿section,question,option,input_type,input_id,dependence,dependence_value,required,keyword
+BMS,Is the background measurement study completed?,Yes,y/n,BMS,NA,NA,TRUE,BMS::1
+BMS,Is the background measurement study completed?,No,y/n,BMS,NA,NA,TRUE,BMS::0
+BMS,Is the background measurement study disseminated?,Yes,y/n,SD,BMS,Yes,TRUE,BMS-SD::1
+BMS,Is the background measurement study disseminated?,No,y/n,SD,BMS,Yes,TRUE,BMS-SD::0
+BMS,Is a reference for the background measurement study provided?,Yes,y/n,REF,SD,Yes,TRUE,BMS-REF::1
+BMS,Is a reference for the background measurement study provided?,No,y/n,REF,SD,Yes,TRUE,BMS-REF::0
+BMS,Are the evaluation and methods provided?,Yes,y/n,EM,BMS,Yes,TRUE,BMS-EM::1
+BMS,Are the evaluation and methods provided?,No,y/n,EM,BMS,Yes,TRUE,BMS-EM::0
+BMS,"If, yes, how are the evalutation and methods provided?",A description is provided.,mc,EM_TYPE,EM,Yes,TRUE,BMS-EM-DESC::1
+BMS,"If, yes, how are the evalutation and methods provided?",A description is referenced via a DOI or equivalent,mc,EM_TYPE,EM,Yes,TRUE,BMS-EM-DOI::1
+BMS,"If, yes, how are the evalutation and methods provided?",All of the above,mc,EM_TYPE,EM,Yes,TRUE,"BMS-EM-DESC::1, BMS-EM-DOI::1 "
+BMS,Is a summary of the NLP pipeline used in this study provided?,Yes,y/n,PRIOR_NLP,BMS,Yes,TRUE,BMS-NLP::1
+BMS,Is a summary of the NLP pipeline used in this study provided?,No,y/n,PRIOR_NLP,BMS,Yes,TRUE,BMS-NLP::0
+BMS,"If, yes, how is the NLP pipeline summary given?",A description is provided.,mc,PRIOR_NLP_TYPE,NLP,Yes,TRUE,BMS-NLP-DESC::1
+BMS,"If, yes, how is the NLP pipeline summary given?",A description is referenced via a DOI or equivalent,mc,NLP_TYPE,NLP,Yes,TRUE,BMS-NLP-DOI::1
+BMS,"If, yes, how is the NLP pipeline summary given? ",All of the above,mc,NLP_TYPE,NLP,Yes,TRUE,"BMS-NLP-DESC::1, BMS-NLP-DOI::1"
+ENV,Have you assessed the variability between the evaluation environment and the application environment?,Yes,y/n,ENV,NA,NA,TRUE,ENV::1
+ENV,Have you assessed the variability between the evaluation environment and the application environment?,No,y/n,ENV,NA,NA,TRUE,ENV::0
+ENV,"If, yes, how is the evalutation of variability provided?",A description is provided.,mc,ENV_ASMNT_TYPE,ENV,Yes,TRUE,ENV-ASMNT-DESC::1
+ENV,"If, yes, how is the evalutation of variability provided?",A description is referenced via a DOI or equivalent,mc,ENV_ASMNT_TYPE,ENV,Yes,TRUE,ENV-ASMNT-DOI::1
+ENV,"If, yes, how is the evalutation of variability provided?",All of the above,mc,ENV_ASMNT_TYPE,ENV,Yes,TRUE,"ENV-ASMNT-DESC::1, ENV-ASMNT-DOI::1"
+COHORT,Is a cohort definition provided?,Yes,y/n,COH_ DEF,NA,NA,TRUE,COHORT::1
+COHORT,Is a cohort definition provided?,No,y/n,COH_ DEF,NA,NA,TRUE,COHORT::0
+COHORT,Cohort details: Inclusion criteria,A description is provided.,mc,COH_DEF_INC,COH_ DEF,Yes,TRUE,COHORT-INC-DESC::1
+COHORT,Cohort details: Inclusion criteria,A description is referenced via a DOI or equivalent,mc,COH_DEF_INC,COH_ DEF,Yes,TRUE,COHORT-INC-DOI::1
+COHORT,Cohort details: Inclusion criteria,All of the above,mc,COH_DEF_INC,COH_ DEF,Yes,TRUE,"COHORT-INC-DESC::1, COHORT-INC-DOI::1"
+COHORT,Cohort details: Inclusion criteria,N/A: not provided,mc,COH_DEF_INC,COH_ DEF,Yes,TRUE,"COHORT-INC-DESC::0, COHORT-INC-DOI::0"
+COHORT,Cohort details: Cohort exit criteria,A description is provided.,mc,COH_DEF_EXIT,COH_ DEF,Yes,TRUE,COHORT-EXIT-DESC::1
+COHORT,Cohort details: Cohort exit criteria,A description is referenced via a DOI or equivalent,mc,COH_DEF_EXIT,COH_ DEF,Yes,TRUE,COHORT-EXIT-DOI::1
+COHORT,Cohort details: Cohort exit criteria,All of the above,mc,COH_DEF_EXIT,COH_ DEF,Yes,TRUE,"COHORT-EXIT-DESC::1, COHORT-EXIT-DOI::1"
+COHORT,Cohort details: Cohort exit criteria,N/A: not provided,mc,COH_DEF_EXIT,COH_ DEF,Yes,TRUE,"COHORT-EXIT-DESC::0, COHORT-EXIT-DOI::0"
+COHORT,Cohort details: Criteria validity assessment,A description is provided.,mc,COH_DEF_VAL,COH_ DEF,Yes,TRUE,COHORT-VALID-DESC::1
+COHORT,Cohort details: Criteria validity assessment,A description is referenced via a DOI or equivalent,mc,COH_DEF_VAL,COH_ DEF,Yes,TRUE,COHORT-VALID-DOI::1
+COHORT,Cohort details: Criteria validity assessment,All of the above,mc,COH_DEF_VAL,COH_ DEF,Yes,TRUE,"COHORT-VALID-DESC::1, COHORT-VALID-DOI::1"
+COHORT,Cohort details: Criteria validity assessment,N/A: not provided,mc,COH_DEF_VAL,COH_ DEF,Yes,TRUE,"COHORT-VALID-DESC::0, COHORT-VALID-DOI::0"
+COHORT,Cohort details: Data source(s),A description is provided.,mc,COH_DEF_DATA,COH_ DEF,Yes,TRUE,COHORT-DATA-DESC::1
+COHORT,Cohort details: Data source(s),A description is referenced via a DOI or equivalent,mc,COH_DEF_DATA,COH_ DEF,Yes,TRUE,COHORT-DATA-DOI::1
+COHORT,Cohort details: Data source(s),All of the above,mc,COH_DEF_DATA,COH_ DEF,Yes,TRUE,"COHORT-DATA-DESC::1, COHORT-DATA-DOI::1"
+COHORT,Cohort details: Data source(s),N/A: not provided,mc,COH_DEF_DATA,COH_ DEF,Yes,TRUE,"COHORT-DATA-DESC::0, COHORT-DATA-DOI::0"
+COHORT,Cohort details: Custom code or published package required for cohort selection,A description is provided.,mc,COH_DEF_CUST,COH_ DEF,Yes,TRUE,COHORT-CODE-DESC::1
+COHORT,Cohort details: Custom code or published package required for cohort selection,A description is referenced via a DOI or equivalent,mc,COH_DEF_CUST,COH_ DEF,Yes,TRUE,COHORT-COD-DOI::1
+COHORT,Cohort details: Custom code or published package required for cohort selection,All of the above,mc,COH_DEF_CUST,COH_ DEF,Yes,TRUE,"COHORT-CODE-DESC::1, COHORT-COD-DOI::1"
+COHORT,Cohort details: Custom code or published package required for cohort selection,N/A: not provided,mc,COH_DEF_CUST,COH_ DEF,Yes,TRUE,"COHORT-CODE-DESC::0, COHORT-CODE-DOI::0"
+COHORT,Cohort creation or screening packages utilized,Package implemented as previously published ,mc,COH_DEF_PKG,COH_ DEF,Yes,TRUE,COHORT-PKG-DESC::1
+COHORT,Cohort creation or screening packages utilized,Package customized beyond prior publication,mc,COH_DEF_PKG,COH_ DEF,Yes,TRUE,COHORT-PKG-DOI::1
+COHORT,Cohort creation or screening packages utilized,Custom package implemented,mc,COH_DEF_PKG,COH_ DEF,Yes,TRUE,"COHORT-PKG-DESC::1, COHORT-PKG-DOI::1"
+COHORT,Cohort creation or screening packages utilized,N/A: cohort selection or screening package not utilized,mc,COH_DEF_PKG,COH_ DEF,Yes,TRUE,"COHORT-PKG-DESC::0, COHORT-PKG-DOI::0"
+CORPUS,Is the gold standard corpus annotation process documented?,Yes,y/n,CA,NA,NA,TRUE,CORPUS::1
+CORPUS,Is the gold standard corpus annotation process documented?,No,y/n,CA,NA,NA,TRUE,CORPUS::0
+CORPUS,Corpus sampling method provided,A description of the corpus sampling procedure is provided,mc,CA_CORP_SAMP,CA,Yes,TRUE,CORPUS-SAMP-DESC::1
+CORPUS,Corpus sampling method provided,A description is referenced via a DOI or equivalent,mc,CA_CORP_SAMP,CA,Yes,TRUE,CORPUS-SAMP-DOI::1
+CORPUS,Corpus sampling method provided,All of the above,mc,CA_CORP_SAMP,CA,Yes,TRUE,"CORPUS-SAMP-DESC::1, CORPUS-SAMP-DOI::1"
+CORPUS,Corpus sampling method provided,N/A: not provided,mc,CA_CORP_SAMP,CA,Yes,TRUE,"CORPUS-SAMP-DESC::0, CORPUS-SAMP-DOI::0"
+CORPUS,Corpus Annotators: Number,A description of quantity is provided,mc,CA_NUM,CA,Yes,TRUE,CORPUS-ANN-NUM-DESC::1
+CORPUS,Corpus Annotators: Number,A description is referenced via a DOI or equivalent,mc,CA_NUM,CA,Yes,TRUE,CORPUS-ANN-NUM-DOI::1
+CORPUS,Corpus Annotators: Number,All of the above,mc,CA_NUM,CA,Yes,TRUE,"CORPUS-ANN-NUM-DESC::1, CORPUS-ANN-NUM-DOI::1"
+CORPUS,Corpus Annotators: Number,N/A: not provided,mc,CA_NUM,CA,Yes,TRUE,"CORPUS-ANN-NUM-DESC::0, CORPUS-ANN-NUM-DOI::0"
+CORPUS,Corpus Annotators: Clinical expertise evaluation,A description is provided.,mc,CA_CLIN,CA,Yes,TRUE,CORPUS-CLIN-EXP-DESC::1
+CORPUS,Corpus Annotators: Clinical expertise evaluation,A description is referenced via a DOI or equivalent,mc,CA_CLIN,CA,Yes,TRUE,CORPUS-CLIN-EXP-DOI::1
+CORPUS,Corpus Annotators: Clinical expertise evaluation,All of the above,mc,CA_CLIN,CA,Yes,TRUE,"CORPUS-CLIN-EXP-DESC::1, CORPUS-CLIN-EXP-DOI::1"
+CORPUS,Corpus Annotators: Clinical expertise evaluation,N/A: not provided,mc,CA_CLIN,CA,Yes,TRUE,"CORPUS-CLIN-EXP-DESC::0, CORPUS-CLIN-EXP-DOI::0"
+CORPUS,Corpus Annotators: Annotation expertise evaluation,A description is provided.,mc,CA_NLP,CA,Yes,TRUE,CORPUS-ANN-EXP-DESC::1
+CORPUS,Corpus Annotators: Annotation expertise evaluation,A description is referenced via a DOI or equivalent,mc,CA_NLP,CA,Yes,TRUE,CORPUS-ANN-EXP-DOI::1
+CORPUS,Corpus Annotators: Annotation expertise evaluation,All of the above,mc,CA_NLP,CA,Yes,TRUE,"CORPUS-ANN-EXP-DESC::1, CORPUS-ANN-EXP-DOI::1"
+CORPUS,Corpus Annotators: Annotation expertise evaluation,N/A: not provided,mc,CA_NLP,CA,Yes,TRUE,"CORPUS-ANN-EXP-DESC::0, CORPUS-ANN-EXP-DOI::0"
+CORPUS,Annotation Training documented ,A description of training is provided,mc,CA_TRN,CA,Yes,TRUE,CORPUS-ANN-TRN-DESC::1
+CORPUS,Annotation Training documented ,A description is referenced via a DOI or equivalent,mc,CA_TRN,CA,Yes,TRUE,CORPUS-ANN-TRN-DOI::1
+CORPUS,Annotation Training documented ,All of the above,mc,CA_TRN,CA,Yes,TRUE,"CORPUS-ANN-TRN-DESC::1, CORPUS-ANN-TRN-DOI::1"
+CORPUS,Annotation Training documented ,N/A: not provided,mc,CA_TRN,CA,Yes,TRUE,"CORPUS-ANN-TRN-DESC::0, CORPUS-ANN-TRN-DOI::0"
+CORPUS,Consensus Development Documented,A description of the consensus development process is provided,mc,CA_CONSENSUS,CA,Yes,TRUE,CORPUS-ANN-CON-DESC::1
+CORPUS,Consensus Development Documented,A description is referenced via a DOI or equivalent,mc,CA_CONSENSUS,CA,Yes,TRUE,CORPUS-ANN-CON-DOI::1
+CORPUS,Consensus Development Documented,All of the above,mc,CA_CONSENSUS,CA,Yes,TRUE,"CORPUS-ANN-CON-DESC::1, CORPUS-ANN-CON-DOI::1"
+CORPUS,Consensus Development Documented,N/A: not provided,mc,CA_CONSENSUS,CA,Yes,TRUE,"CORPUS-ANN-CON-DESC::0, CORPUS-ANN-CON-DOI::0"
+CORPUS,Agreement score utilization,Specific agreement metric required prior to deployment,mc,CA_AGREE,CA,Yes,TRUE,CORPUS-ANN-AGG::1
+CORPUS,Agreement score utilization,N/A: no specific agreement metric provided,mc,CA_AGREE,CA,Yes,TRUE,CORPUS-ANN-AGG::0
+NLP,Is the NLP algorithm and framework defined?,Yes,y/n,NLP,NA,NA,TRUE,NLP::1
+NLP,Is the NLP algorithm and framework defined?,No,y/n,NLP,NA,NA,TRUE,NLP::0
+NLP,Pre-processing steps documented,A description of the processing steps is provided,mc,NLP_PP,NLP,Yes,TRUE,NLP-PP-DESC::1
+NLP,Pre-processing steps documented,A description is referenced via a DOI or equivalent,mc,NLP_PP,NLP,Yes,TRUE,NLP-PP-DOI::1
+NLP,Pre-processing steps documented,All of the above,mc,NLP_PP,NLP,Yes,TRUE,"NLP-PP-DESC::1, NLP-PP-DOI::1"
+NLP,Pre-processing steps documented,N/A: not provided,mc,NLP_PP,NLP,Yes,TRUE,"NLP-PP-DESC::0, NLP-PP-DOI::0"
+NLP,Are context definitions provided?,Yes,y/n,NLP_CON,NLP,Yes,TRUE,NLP-CTXT::1
+NLP,Are context definitions provided?,No,y/n,NLP_CON,NLP,Yes,TRUE,NLP-CTXT::0
+NLP,Context definitions: Certainty documented,A description of certainty definitions is provided,mc,NLP_CERT,NLP_CON,Yes,TRUE,NLP-CTXT-DESC::1
+NLP,Context definitions: Certainty documented,A description is referenced via a DOI or equivalent,mc,NLP_CERT,NLP_CON,Yes,TRUE,NLP-CTXT-DOI::1
+NLP,Context definitions: Certainty documented,All of the above,mc,NLP_CERT,NLP_CON,Yes,TRUE,"NLP-CTXT-DESC::1, NLP-CTXT-DOI::1"
+NLP,Context definitions: Certainty documented,N/A: not provided,mc,NLP_CERT,NLP_CON,Yes,TRUE,"NLP-CTXT-DESC::0, NLP-CTXT-DOI::0"
+NLP,Context definitions: Status defined,A description of temporal status is provided,mc,NLP_STATUS,NLP_CON,Yes,TRUE,NLP-STATUS-DESC::1
+NLP,Context definitions: Status defined,A description is referenced via a DOI or equivalent,mc,NLP_STATUS,NLP_CON,Yes,TRUE,NLP-STATUS-DOI::1
+NLP,Context definitions: Status defined,All of the above,mc,NLP_STATUS,NLP_CON,Yes,TRUE,"NLP-STATUS-DESC::1, NLP-STATUS-DOI::1"
+NLP,Context definitions: Status defined,N/A: not provided,mc,NLP_STATUS,NLP_CON,Yes,TRUE,"NLP-STATUS-DESC::0, NLP-STATUS-DOI::0"
+NLP,Context definitions: Experiencer identified,A description of the specificity of the experiencer is provided,mc,NLP_EXPERIENCER,NLP_CON,Yes,TRUE,NLP-EXP-DESC::1
+NLP,Context definitions: Experiencer identified,A description is referenced via a DOI or equivalent,mc,NLP_EXPERIENCER,NLP_CON,Yes,TRUE,NLP-EXP-DOI::1
+NLP,Context definitions: Experiencer identified,All of the above,mc,NLP_EXPERIENCER,NLP_CON,Yes,TRUE,"NLP-EXP-DESC::1, NLP-EXP-DOI::1"
+NLP,Context definitions: Experiencer identified,N/A: not provided,mc,NLP_EXPERIENCER,NLP_CON,Yes,TRUE,"NLP-EXP-DESC::0, NLP-EXP-DOI::0"
+NLP,Normalization techniques and resources applied to NLP output,A description of the normalization is provided,mc,NLP_NORM,NLP,Yes,TRUE,NLP-NORM-DESC::1
+NLP,Normalization techniques and resources applied to NLP output,A description is referenced via a DOI or equivalent,mc,NLP_NORM,NLP,Yes,TRUE,NLP-NORM-DOI::1
+NLP,Normalization techniques and resources applied to NLP output,All of the above,mc,NLP_NORM,NLP,Yes,TRUE,"NLP-NORM-DESC::1, NLP-NORM-DOI::1"
+NLP,Normalization techniques and resources applied to NLP output,N/A: not provided,mc,NLP_NORM,NLP,Yes,TRUE,"NLP-NORM-DESC::0, NLP-NORM-DOI::0"
+NLP,Are symbolic (rule-based) lexicons utilized?,Yes,y/n,NLP_SYM,NLP,Yes,TRUE,NLP-SYMB::1
+NLP,Are symbolic (rule-based) lexicons utilized?,No,y/n,NLP_SYM,NLP,Yes,TRUE,NLP-SYMB::0
+NLP,"Symbolic (rule-based) lexicons, patterns, and logic provided",A description of properties associated with the symbolic method is provided,mc,NLP_SYM_METH,NLP_SYM,Yes,TRUE,NLP-SYMB-DESC::1
+NLP,"Symbolic (rule-based) lexicons, patterns, and logic provided",A description is referenced via a DOI or equivalent,mc,NLP_SYM_METH,NLP_SYM,Yes,TRUE,NLP-SYMB-DOI::1
+NLP,"Symbolic (rule-based) lexicons, patterns, and logic provided",All of the above,mc,NLP_SYM_METH,NLP_SYM,Yes,TRUE,"NLP-SYMB-DESC::1, NLP-SYMB-DOI::1"
+NLP,"Symbolic (rule-based) lexicons, patterns, and logic provided","N/A: Symbolic approach utilized, but details not provided",mc,NLP_SYM_METH,NLP_SYM,Yes,TRUE,"NLP-SYMB-DESC::0, NLP-SYMB-DOI::0"
+NLP,Are probabilistic models utilized?,Yes,y/n,NLP_PROB,NLP,Yes,TRUE,NLP-PROB::1
+NLP,Are probabilistic models utilized?,No,y/n,NLP_PROB,NLP,Yes,TRUE,NLP-PROB::0
+NLP,Probabilistic training method and models provided,A description of properties associated with the probabilistic model are provided,mc,NLP_PROB_METH,NLP_PROB,Yes,TRUE,NLP-PROB-DESC::1
+NLP,Probabilistic training method and models provided,A description is referenced via a DOI or equivalent,mc,NLP_PROB_METH,NLP_PROB,Yes,TRUE,NLP-PROB-DOI::1
+NLP,Probabilistic training method and models provided,All of the above,mc,NLP_PROB_METH,NLP_PROB,Yes,TRUE,"NLP-PROB-DESC::1, NLP-PROB-DOI::1"
+NLP,Probabilistic training method and models provided,"N/A: Probabilistic approach utilized, but details not provided",mc,NLP_PROB_METH,NLP_PROB,Yes,TRUE,"NLP-PROB-DESC::0, NLP-PROB-DOI::0"
